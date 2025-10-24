@@ -72,32 +72,9 @@ function solve(model::MySimulatedAnnealingMinimumVariancePortfolioAllocationProb
     while has_converged == false
     
         accepted_counter = 0; 
-        for _ in 1:KL
-       
-            # generate a new candidate solution -
-            candidate_w = current_w + β * randn(length(w));
-            
-            # TODO: If you want to get rid of the barrier term, comment out the next line
-            # candidate_w = max.(0.0, candidate_w); # check non-negativity here, no barriers
-
-            # compute the objective function at the candidate solution -
-            candidate_f = _objective_function(candidate_w, ḡ, Σ̂, R, μ, ρ);
-
-            # accept or reject the candidate solution -
-            if candidate_f < current_f || rand() < exp((current_f - candidate_f) / T)
-                current_w = candidate_w;
-                current_f = candidate_f;
-
-                # we've accepeted this move, update the counter -
-                accepted_counter += 1;
-            end
         
-            # Compute the diff between current and best solution found so far
-            if (current_f < f_best)
-                w_best = current_w;
-                f_best = current_f;
-            end
-        end
+        # TODO: Implement simulated annealing logic here -
+        throw(ErrorException("Oooops! Simulated annealing logic not yet implemented!!"));
 
         # update KL -
         fraction_accepted = accepted_counter/KL; # what is the fraction of accepted moves
